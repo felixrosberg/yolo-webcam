@@ -9,7 +9,7 @@ LABELS = open(LABELS_FILE).read().strip().split('\n')
 
 CONFIDENCE = 0.3
 THRESHOLD = 0.9
-RESOLUTION_SCALE = 0.7
+RESOLUTION_SCALE = 0.95
 
 np.random.seed(42)
 COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), dtype='uint8')
@@ -65,7 +65,7 @@ while True:
             text = "{}: {:.4f}".format(LABELS[class_ids[i]],  confidences[i])
             cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color,  2)
 
-    cv2.imshow("Frame",  cv2.resize(image, (int(1440 * RESOLUTION_SCALE), int(700 * RESOLUTION_SCALE))))
+    cv2.imshow("Frame",  cv2.resize(image, (int(1440 * RESOLUTION_SCALE), int(900 * RESOLUTION_SCALE))))
     key = cv2.waitKey(1) & 0xFF
 
     if key == ord("q"):
