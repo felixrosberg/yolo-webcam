@@ -4,12 +4,12 @@ Python version used is python 3.6. Probably works on other python 3 versions, bu
 enviroment manager. It is set to display resolution 1440x900, this is scalable with the RESOLUTION_FACTOR parameter. Press **q** to
 quit the video stream and end the program.
 # Requirements
-* Python 3.6 (3.x?) (conda create -n "env-name" python=3.6) -> conda activate env-name
+* Python 3.6 (3.x?) (conda create -n "env-name" python=3.6 -> conda activate env-name)
 * cv2 (pip install opencv-python)
 * numpy (pip install numpy)
 
 If you want to run other versions of yolo you have to download the weights and config files from [here](https://pjreddie.com/darknet/yolo/) and
-adapt the script to target does files instead of the yolov3-tiny version.
+adapt the script to target those files instead of the yolov3-tiny version.
 # How to run
 ```
 python python-yolo-cam.py -ct=0.8 -ot=0.9 -rs=0.5
