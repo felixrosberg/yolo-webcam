@@ -10,3 +10,12 @@ quit the video stream and end the program.
 
 If you want to run other versions of yolo you have to download the weights and config files from [here](https://pjreddie.com/darknet/yolo/) and
 adapt the script to target does files instead of the yolov3-tiny version.
+# How to run
+```
+python python-yolo-cam.py -ct=0.8 -ot=0.9 -rs=0.5
+```
+This will run the streaming with confidence theshold of 0.8, overlap threshold of 0.9 and scale the 1440x900 resolution by 0.5 (50%).
+```
+python python-yolo-cam.py
+```
+This will run with default parameters.
