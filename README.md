@@ -1,8 +1,10 @@
 # yolo-webcam
-Runs yolo v3-tiny on the device camera. Just run the script with default parameters, or look below for example on how to run with custom parameter values.
+Adapted to run yolo v3-tiny on the device camera (Not tested for external cameras, but should be trivial to change). Just run the script with default parameters, or look below for example on how to run with custom parameter values.
 Python version used is python 3.6. Probably works on other python 3 versions, but is not tested. I recommend using Anaconda3 as
 enviroment manager (and interpreter). It is set to display resolution 1440x900, this is scalable with the RESOLUTION_FACTOR parameter. Press **q** to
 quit the video stream and end the program.
+
+Credit to Praveen Pavithran and his [blog](https://cloudxlab.com/blog/how-to-run-yolo-on-cctv-feed/) post(s) for streamlining the cv2 implementation.
 # Requirements
 * Python 3.6 (3.x?) (conda create -n "env-name" python=3.6 -> conda activate env-name)
 * cv2 (pip install opencv-python)
