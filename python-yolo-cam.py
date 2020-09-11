@@ -2,7 +2,8 @@ import numpy as np
 import cv2
 import argparse
 
-def run_yolo(ct, ot, rs):
+
+def run_yolo(ct, ot, rs, fs):
     LABELS_FILE = "yolo-tiny/coco.names"
     CONFIG_FILE = "yolo-tiny/yolov3-tiny.cfg"
     WEIGHTS_FILE = "yolo-tiny/yolov3-tiny.weights"
@@ -13,6 +14,7 @@ def run_yolo(ct, ot, rs):
     CONFIDENCE = ct         # Only display objects with more than CONFIDENCE. (0-1)
     THRESHOLD = ot          # decides how much objects are allowed to overlap. (0-1) 1 Being maximum overlap.
     RESOLUTION_SCALE = rs   # cv2 stream the video in a scale of 1440x900. This can be scaled. (0-inf)
+    FULLSCREEN = fs
     """PARAMETERS"""
 
     np.random.seed(42)
@@ -68,7 +70,10 @@ def run_yolo(ct, ot, rs):
                 text = "{}: {:.4f}".format(LABELS[class_ids[i]], confidences[i])
                 cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
-        cv2.imshow("Frame", cv2.resize(image, (int(1440 * RESOLUTION_SCALE), int(900 * RESOLUTION_SCALE))))
+        if FULLSCREEN == 1:
+            cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
+            cv2.setWindowProperty("window", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+        cv2.imshow("window", cv2.resize(image, (int(1440 * RESOLUTION_SCALE), int(900 * RESOLUTION_SCALE))))
         key = cv2.waitKey(1) & 0xFF
 
         if key == ord("q"):
@@ -100,12 +105,16 @@ def main():
                              'Default=0.8',
                         dest='rs',
                         default='0.8')
+    parser.add_argument('-fs',
+                        help='Full screen flag. 0 or 1.',
+                        dest='fs',
+                        default='0')
     args = parser.parse_args()
     args = vars(args)
 
-    ct, ot, rs = args['ct'], args['ot'], args['rs']
+    ct, ot, rs, fs = args['ct'], args['ot'], args['rs'], args['fs']
 
-    run_yolo(ct, ot, rs)
+    run_yolo(float(ct), float(ot), float(rs), int(fs))
 
 
 if __name__ == "__main__":
