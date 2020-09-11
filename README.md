@@ -1,7 +1,7 @@
 # yolo-webcam
-Runs yolo v3-tiny on the device camera. Just run the script, change overlap and confidence threshold in the script directly.
+Runs yolo v3-tiny on the device camera. Just run the script with default parameters, or look below for example on how to run with custom parameter values.
 Python version used is python 3.6. Probably works on other python 3 versions, but is not tested. I recommend using Anaconda3 as
-enviroment manager. It is set to display resolution 1440x900, this is scalable with the RESOLUTION_FACTOR parameter. Press **q** to
+enviroment manager (and interpreter). It is set to display resolution 1440x900, this is scalable with the RESOLUTION_FACTOR parameter. Press **q** to
 quit the video stream and end the program.
 # Requirements
 * Python 3.6 (3.x?) (conda create -n "env-name" python=3.6 -> conda activate env-name)
